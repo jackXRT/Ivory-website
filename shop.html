@@ -1,102 +1,57 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop - EmpressoHair</title>
+  <title>EmpressoHair Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-    }
-    .container {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .product {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 10px;
+    .product-card {
       position: relative;
-    }
-    .product img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    .product .title {
-      font-weight: bold;
-      font-size: 16px;
-      margin: 10px 0 5px;
-    }
-    .product .price {
-      color: #b12704;
-      font-weight: bold;
-    }
-    .stars {
-      color: gold;
-      font-size: 14px;
     }
     .discount-tag {
       position: absolute;
       top: 10px;
-      left: 10px;
+      right: 10px;
       background-color: red;
       color: white;
-      padding: 3px 6px;
-      font-size: 12px;
-      border-radius: 5px;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 0.25rem;
+      z-index: 10;
     }
     .get-discount {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #333;
-      color: white;
-      padding: 5px 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .message {
       display: none;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #333;
+    }
+    .purchased .get-discount {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: red;
     }
   </style>
 </head>
-<body>
-  <h2 style="text-align: center; padding: 20px;">EmpressoHair Shop</h2>
-  <div class="container"><div class="product">
-  <span class="discount-tag">30% Discount</span>
-  <img src="Peruvian-red.jpeg" alt="Peruvian Straight Hair">
-  <div class="title">Peruvian Straight Hair</div>
-  <div class="price">GHS 450.00</div>
-  <div class="stars">★ ★ ★ ★ ☆ (56)</div>
-  <button class="get-discount" onclick="showMessage(this)">Get Discount</button>
-  <div class="message">30% Discount for Wholesalers 100+ units</div>
+<body class="bg-white text-gray-800">
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6 text-center">EmpressoHair Shop</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+<!-- Repeat this block for all 16 products -->
+<!-- Example product card (repeat and modify per product) -->
+<div class="product-card bg-white border border-gray-200 rounded-xl shadow p-4">
+  <div class="discount-tag">30% Discount</div>
+  <img src="images/Blone-jpeg" alt="Honey Blonde Wig" class="w-full h-48 object-cover mb-3 rounded" />
+  <h2 class="text-sm font-semibold">13X6 HD Lace Honey Blonde Straight Wig</h2>
+  <div class="text-yellow-400 text-sm">★★★★★</div>
+  <p class="text-sm text-gray-500">438 sold</p>
+  <p class="text-sm">Length: 16" - 32" | Density: 180%</p>
+  <button class="get-discount">*Discount available only for wholesale (100+)</button>
 </div>
 
-<div class="product">
-  <span class="discount-tag">30% Discount</span>
-  <img src="images-wig.jpg" alt="Brazilian Body Wave">
-  <div class="title">Brazilian Body Wave</div>
-  <div class="price">GHS 450.00</div>
-  <div class="stars">★ ★ ★ ★ ★ (108)</div>
-  <button class="get-discount" onclick="showMessage(this)">Get Discount</button>
-  <div class="message">30% Discount for Wholesalers 100+ units</div>
-</div>
+<!-- Repeat similar product-card blocks for all 16 products using their correct images and details -->
 
+    </div>
   </div>
-  <script>
-    function showMessage(btn) {
-      btn.style.display = 'none';
-      btn.nextElementSibling.style.display = 'block';
-    }
-  </script>
 </body>
 </html>
+
