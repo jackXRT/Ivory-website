@@ -1,13 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EmpressoHair Shop</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>EmpressoHair - Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .product-card {
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
       position: relative;
+    }
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
     }
     .discount-tag {
       position: absolute;
@@ -15,43 +36,98 @@
       right: 10px;
       background-color: red;
       color: white;
-      font-size: 0.75rem;
-      padding: 2px 6px;
-      border-radius: 0.25rem;
-      z-index: 10;
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 5px;
     }
-    .get-discount {
-      display: none;
+    .product-info {
+      padding: 15px;
     }
-    .purchased .get-discount {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.875rem;
-      color: red;
+    .product-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .rating {
+      color: #f0c040;
+      margin-bottom: 5px;
+    }
+    .sales {
+      color: #888;
+      font-size: 14px;
+    }
+    .buy-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .buy-btn:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
-<body class="bg-white text-gray-800">
-  <div class="container mx-auto py-8 px-4">
-    <h1 class="text-3xl font-bold mb-6 text-center">EmpressoHair Shop</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-<!-- Repeat this block for all 16 products -->
-<!-- Example product card (repeat and modify per product) -->
-<div class="product-card bg-white border border-gray-200 rounded-xl shadow p-4">
-  <div class="discount-tag">30% Discount</div>
-  <img src="images/Blone-jpeg" alt="Honey Blonde Wig" class="w-full h-48 object-cover mb-3 rounded" />
-  <h2 class="text-sm font-semibold">13X6 HD Lace Honey Blonde Straight Wig</h2>
-  <div class="text-yellow-400 text-sm">★★★★★</div>
-  <p class="text-sm text-gray-500">438 sold</p>
-  <p class="text-sm">Length: 16" - 32" | Density: 180%</p>
-  <button class="get-discount">*Discount available only for wholesale (100+)</button>
-</div>
-
-<!-- Repeat similar product-card blocks for all 16 products using their correct images and details -->
-
+<body>
+  <div class="product-grid">
+    <!-- Product Template Start -->
+    <!-- Repeat this block for all 16 products -->
+    <div class="product">
+      <img src="Peruvian-red.jpeg" alt="Peruvian Wig">
+      <div class="discount-tag">30% Discount</div>
+      <div class="product-info">
+        <div class="product-title">Peruvian Straight Hair Burgundy 13X4 HD Lace Front Wig</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+        <div class="sales">438 sold</div>
+        <a class="buy-btn" href="checkout.html" onclick="openModal(event)">Buy Now</a>
+      </div>
     </div>
-  </div>
-</body>
+    <div class="product">
+      <img src="Malaysian-c.jpeg" alt="Malaysian Curly">
+      <div class="discount-tag">30% Discount</div>
+      <div class="product-info">
+        <div class="product-title">13x6 Malaysian Curly HD Lace Frontal Human Hair Wig</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+        <div class="sales">600+ sold</div>
+        <a class="buy-btn" href="checkout.html" onclick="openModal(event)">Buy Now</a>
+      </div>
+    </div>
+    <div class="product">
+      <img src="Ash-blonde.jpeg" alt="Ash Blonde HL">
+      <div class="discount-tag">30% Discount</div>
+      <div class="product-info">
+        <div class="product-title">Ash Blonde Highlights 13x6 Body Wave Frontal Wig</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="sales">69 sold</div>
+        <a class="buy-btn" href="checkout.html" onclick="openModal(event)">Buy Now</a>
+      </div>
+    </div>
+    <div class="product">
+      <img src="BBBob-wig.jpg" alt="Bob Wig">
+      <div class="discount-tag">30% Discount</div>
+      <div class="product-info">
+        <div class="product-title">Brazilian Straight Bob Lace Wig with Bangs</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="sales">420 sold</div>
+        <a class="buy-btn" href="checkout.html" onclick="openModal(event)">Buy Now</a>
+      </div>
+    </div>
+    <!-- Add remaining products similarly... -->
+  </div>  <!-- Modal Example -->  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:10px; width:300px;">
+      <h3>Processing Order</h3>
+      <p>Your order is being processed...</p>
+      <button onclick="document.getElementById('modal').style.display='none'">Close</button>
+    </div>
+  </div>  <script>
+    function openModal(event) {
+      event.preventDefault();
+      document.getElementById('modal').style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = event.target.getAttribute('href');
+      }, 2000);
+    }
+  </script></body>
 </html>
-
