@@ -134,3 +134,10 @@ img {
   cursor: pointer;
   font-size: 24px;
 }
+.modal-images img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  transition: opacity 0.4s ease-in-out;
+  cursor: pointer;
+}
