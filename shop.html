@@ -1,5 +1,5 @@
-
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +11,21 @@
       margin: 0;
       padding: 0;
       background-color: #f8f8f8;
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+    .filter-bar input,
+    .filter-bar select {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     .product-grid {
       display: grid;
@@ -24,11 +39,16 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       overflow: hidden;
       position: relative;
+      transition: transform 0.3s;
+    }
+    .product:hover {
+      transform: scale(1.03);
     }
     .product img {
       width: 100%;
       height: 300px;
       object-fit: cover;
+      cursor: pointer;
     }
     .discount-tag {
       position: absolute;
@@ -46,732 +66,199 @@
     .product-title {
       font-size: 16px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     .rating {
       color: #f0c040;
-      margin-bottom: 5px;
     }
     .sales {
       color: #888;
       font-size: 14px;
+      margin-bottom: 10px;
     }
-    .buy-btn {
-      display: inline-block;
+    .small-text {
+      font-size: 13px;
+      color: #555;
+    }
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-images img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .cart-button {
       margin-top: 10px;
       padding: 10px 15px;
-      background-color: #007bff;
+      background-color: #333;
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 5px;
-    }
-    .buy-btn:hover {
-      background-color: #0056b3;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  
-</div>  <!-- Modal Example -->  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
-    <div style="background:white; padding:20px; border-radius:10px; width:300px;">
-      <h3>Processing Order</h3>
-      <p>Your order is being processed...</p>
-      <button onclick="document.getElementById('modal').style.display='none'">Close</button>
-    </div>
+  <div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="Search wigs...">
+    <select id="filterType">
+      <option value="">All Types</option>
+      <option value="Straight">Straight</option>
+      <option value="Curly">Curly</option>
+      <option value="Wavy">Wavy</option>
+    </select>
+    <select id="filterColor">
+      <option value="">All Colors</option>
+      <option value="Burgundy">Burgundy</option>
+      <option value="Blonde">Blonde</option>
+      <option value="Black">Black</option>
+    </select>
+    <select id="filterLength">
+      <option value="">All Lengths</option>
+      <option value="10\"">10"</option>
+      <option value="20\"">20"</option>
+      <option value="30\"">30"</option>
+    </select>
+    <select id="filterDensity">
+      <option value="">All Densities</option>
+      <option value="150%">150%</option>
+      <option value="180%">180%</option>
+      <option value="250%">250%</option>
+    </select>
   </div>
+
   <div id="product-grid" class="product-grid"></div>
-</div><script>
-  const products = [/{name: "Peruvian Burgundy Straight Wig – 99J",  
-    rating: 5,  
-    sold: 32,  
-    length: [  
-      { size: "16 inches", price: null },  
-      { size: "18 inches", price: null },  
-      { size: "20 inches", price: null },  
-    ],  
-    density: "180%",  
-    color: "99J Burgundy",  
-    images: ["Peruvian-red.jpeg", "Peruvian-red1.jpeg"]  
-  
-name:"13X6 HD Lace Front Honey Blonde Wig – #27 Brazilian Straight",
-  rating: 5,
-  sold: 438,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-  ],
-  density: "180%",
-  color: "#27 Honey Blonde",
-  images: ["Blone-jpeg", "Blonde-jpeg"]
-},
-{
-  name: "13x6 Malaysian Curly Human Hair Wig – 40 Inch Jerry Wave",
-  rating: 4.8,
-  sold: 600,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "200%",
-  color: "Natural Black",
-  images: ["Malaysian-c.jpeg", "Malaysian-cc.jpeg"]
-},
-{
-  name: "Ash Blonde Highlights Brazilian Body Wave Wig – 13x6",
-  rating: 4.7,
-  sold: 69,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-  ],
-  density: "150% - 180%",
-  color: "Ash Blonde HL",
-  images: ["Ash-blonde.jpeg", "Ash-blonde.jpg"]
-},
-{
-  name: "Brazilian Straight Bob Wig with Bangs – Glueless Lace",
-  rating: 4.7,
-  sold: 420,
-  length: [
-    { size: "8 inches", price: null },
-    { size: "10 inches", price: null },
-    { size: "12 inches", price: null },
-    { size: "14 inches", price: null },
-  ],
-  density: "180%",
-  color: "1B",
-  images: ["BBBob-wig.jpg", "BBBob-wig.jpeg"]
-},
-{
-  name: "Brazilian Deep Wave Wig – 13x4/13x6 HD Lace 40 Inches",
-  rating: 4.9,
-  sold: 600,
-  length: [
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "180% - 200%",
-  color: "Natural Black",
-  images: ["Deepwave-13x6.jpeg", "1Deepwave-13x6.jpeg"]
-},
-{
-  name: "Silver Gray Straight Wig – 13x4 HD Lace",
-  rating: 5,
-  sold: 18,
-  length: [
-    { size: "14 inches", price: null },
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-  ],
-  density: "200%",
-  color: "Gray",
-  images: ["Silver-wig.jpeg", "Silver-wig1.jpeg"]
-},
-{
-  name: "Wigirl 4/27 Highlight Ombre Blonde Wig – 40 Inches HD Lace",
-  rating: 5,
-  sold: 46,
-  length: [
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "220% - 300%",
-  color: "4/27 Ombre",
-  images: ["Ombre-Blonde.jpeg", "Ombre-Blonde1.jpeg"]
-},
-{
-  name: "4/27 Highlight Ombre Body Wave Wig – 36 Inch HD Lace",
-  rating: 5,
-  sold: 43,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-  ],
-  density: "150% - 180%",
-  color: "4/27 Highlight Ombre",
-  images: ["Ombre-Body Wave.jpeg", "Ombre-Body Wave1.jpeg"]
-},
-{
-  name: "Pixie Cut Wig – Short 13x4 Layered Lace Wig",
-  rating: 4.6,
-  sold: 151,
-  length: [
-    { size: "6 inches", price: null },
-  ],
-  density: "180%",
-  color: "Natural Color",
-  images: ["Pixie-13x4.jpeg", "1Pixie-13x4.jpeg"]
-},
-{
-  name: "Bone Straight HD Lace Wig – 13x4 & 5x5 Glueless",
-  rating: 4.9,
-  sold: 43,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-  ],
-  density: "200%",
-  color: "Natural Black",
-  images: ["Bone-straight.jpeg", "Bone-straight1.jpeg"]
-},
-{
-  name: "Loose Deep Wave Wig – Transparent Lace Human Hair",
-  rating: null,
-  sold: null,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-  ],
-  density: "150% - 180%",
-  color: "Natural Color",
-  images: ["Loose-deepwig1.jpeg", "Loose-deepwig.jpeg"]
-},
-{
-  name: "Chocolate Brown Body Wave Wig – 13x6 HD Lace",
-  rating: 5,
-  sold: 64,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "200%",
-  color: "Chocolate Brown",
-  images: ["Chocolate wig1.jpeg", "Chocolate wig.jpeg"]
-},
-{
-  name: "Short Curly Pixie Bob Wig – Natural Black",
-  rating: 4.3,
-  sold: 29,
-  length: [
-    { size: "Model Length", price: null },
-  ],
-  density: "150%",
-  color: "Natural Black",
-  images: ["Peruvian-bob1.jpeg", "Peruvian-bob.jpeg"]
-},
-{
-  name: "613 Honey Blonde Deep Wave Wig – 13x6 HD Lace",
-  rating: 5,
-  sold: 30,
-  length: [
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-  ],
-  density: "190%",
-  color: "613 Honey Blonde",
-  images: ["Deep-curly1.jpeg", "Deep-curly.jpeg"]
-},
-{
-  name: "Ginger Orange Bob Wig – 13x4 Indian Straight",
-  rating: 5,
-  sold: 30,
-  length: [
-    { size: "10 inches", price: null },
-    { size: "12 inches", price: null },
-    { size: "14 inches", price: null },
-  ],
-  density: "200%",
-  color: "Ginger Orange",
-  images: ["1Ginger-wig.jpeg", "Ginger-wig{
-  name: "13X6 HD Lace Front Honey Blonde Wig – #27 Brazilian Straight",
-  rating: 5,
-  sold: 438,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-  ],
-  density: "180%",
-  color: "#27 Honey Blonde",
-  images: ["Blone-jpeg", "Blonde-jpeg"]
-},
-{
-  name: "13x6 Malaysian Curly Human Hair Wig – 40 Inch Jerry Wave",
-  rating: 4.8,
-  sold: 600,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "200%",
-  color: "Natural Black",
-  images: ["Malaysian-c.jpeg", "Malaysian-cc.jpeg"]
-},
-{
-  name: "Ash Blonde Highlights Brazilian Body Wave Wig – 13x6",
-  rating: 4.7,
-  sold: 69,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-  ],
-  density: "150% - 180%",
-  color: "Ash Blonde HL",
-  images: ["Ash-blonde.jpeg", "Ash-blonde.jpg"]
-},
-{
-  name: "Brazilian Straight Bob Wig with Bangs – Glueless Lace",
-  rating: 4.7,
-  sold: 420,
-  length: [
-    { size: "8 inches", price: null },
-    { size: "10 inches", price: null },
-    { size: "12 inches", price: null },
-    { size: "14 inches", price: null },
-  ],
-  density: "180%",
-  color: "1B",
-  images: ["BBBob-wig.jpg", "BBBob-wig.jpeg"]
-},
-{
-  name: "Brazilian Deep Wave Wig – 13x4/13x6 HD Lace 40 Inches",
-  rating: 4.9,
-  sold: 600,
-  length: [
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "180% - 200%",
-  color: "Natural Black",
-  images: ["Deepwave-13x6.jpeg", "1Deepwave-13x6.jpeg"]
-},
-{
-  name: "Silver Gray Straight Wig – 13x4 HD Lace",
-  rating: 5,
-  sold: 18,
-  length: [
-    { size: "14 inches", price: null },
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-  ],
-  density: "200%",
-  color: "Gray",
-  images: ["Silver-wig.jpeg", "Silver-wig1.jpeg"]
-},
-{
-  name: "Wigirl 4/27 Highlight Ombre Blonde Wig – 40 Inches HD Lace",
-  rating: 5,
-  sold: 46,
-  length: [
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "220% - 300%",
-  color: "4/27 Ombre",
-  images: ["Ombre-Blonde.jpeg", "Ombre-Blonde1.jpeg"]
-},
-{
-  name: "4/27 Highlight Ombre Body Wave Wig – 36 Inch HD Lace",
-  rating: 5,
-  sold: 43,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-  ],
-  density: "150% - 180%",
-  color: "4/27 Highlight Ombre",
-  images: ["Ombre-Body Wave.jpeg", "Ombre-Body Wave1.jpeg"]
-},
-{
-  name: "Pixie Cut Wig – Short 13x4 Layered Lace Wig",
-  rating: 4.6,
-  sold: 151,
-  length: [
-    { size: "6 inches", price: null },
-  ],
-  density: "180%",
-  color: "Natural Color",
-  images: ["Pixie-13x4.jpeg", "1Pixie-13x4.jpeg"]
-},
-{
-  name: "Bone Straight HD Lace Wig – 13x4 & 5x5 Glueless",
-  rating: 4.9,
-  sold: 43,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-  ],
-  density: "200%",
-  color: "Natural Black",
-  images: ["Bone-straight.jpeg", "Bone-straight1.jpeg"]
-},
-{
-  name: "Loose Deep Wave Wig – Transparent Lace Human Hair",
-  rating: null,
-  sold: null,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-  ],
-  density: "150% - 180%",
-  color: "Natural Color",
-  images: ["Loose-deepwig1.jpeg", "Loose-deepwig.jpeg"]
-},
-{
-  name: "Chocolate Brown Body Wave Wig – 13x6 HD Lace",
-  rating: 5,
-  sold: 64,
-  length: [
-    { size: "16 inches", price: null },
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-    { size: "40 inches", price: null },
-  ],
-  density: "200%",
-  color: "Chocolate Brown",
-  images: ["Chocolate wig1.jpeg", "Chocolate wig.jpeg"]
-},
-{
-  name: "Short Curly Pixie Bob Wig – Natural Black",
-  rating: 4.3,
-  sold: 29,
-  length: [
-    { size: "Model Length", price: null },
-  ],
-  density: "150%",
-  color: "Natural Black",
-  images: ["Peruvian-bob1.jpeg", "Peruvian-bob.jpeg"]
-},
-{
-  name: "613 Honey Blonde Deep Wave Wig – 13x6 HD Lace",
-  rating: 5,
-  sold: 30,
-  length: [
-    { size: "18 inches", price: null },
-    { size: "20 inches", price: null },
-    { size: "22 inches", price: null },
-    { size: "24 inches", price: null },
-    { size: "26 inches", price: null },
-    { size: "28 inches", price: null },
-    { size: "30 inches", price: null },
-    { size: "32 inches", price: null },
-    { size: "34 inches", price: null },
-    { size: "36 inches", price: null },
-    { size: "38 inches", price: null },
-  ],
-  density: "190%",
-  color: "613 Honey Blonde",
-  images: ["Deep-curly1.jpeg", "Deep-curly.jpeg"]
-},
-{
-  name: "Ginger Orange Bob Wig – 13x4 Indian Straight",
-  rating: 5,
-  sold: 30,
-  length: [
-    { size: "10 inches", price: null },
-    { size: "12 inches", price: null },
-    { size: "14 inches", price: null },
-  ],
-  density: "200%",
-  color: "Ginger Orange",
-  images: ["1Ginger-wig.jpeg", "Ginger-wig.jpeg"]
-}.jpeg"]
-  
-}* all your product data will go here in object format */];function showProduct(index) { const product = products[index]; document.getElementById('modalImage1').src = images/${product.image1}; document.getElementById('modalImage2').src = images/${product.image2}; document.getElementById('modalTitle').textContent = product.title; document.getElementById('modalRatingSold').textContent = ${product.rating} ⭐ | ${product.sold} sold; document.getElementById('modalLengths').textContent = product.lengths.join(", "); document.getElementById('modalDensity').textContent = product.density.join(", "); document.getElementById('modalColor').textContent = product.color?.join(", ") || "—"; document.getElementById('productModal').style.display = 'block'; }
 
-function closeModal() { document.getElementById('productModal').style.display = 'none'; }
-
-function openBuy() { alert("Proceed to checkout or link this to your cart!"); } </script></body>
-
-</html>
-</script>
-<script>
-  const grid = document.getElementById("product-grid");
-
-  products.forEach((product, index) => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <img src="images/${product.image1}" alt="${product.title}" onclick="showProduct(${index})">
-      <div class="details">
-        <div class="discount-tag">30% Discount</div>
-        <h3>${product.title}</h3>
-        <div class="stars">${"★".repeat(Math.floor(product.rating)) + "☆".repeat(5 - Math.floor(product.rating))} (${product.sold} sold)</div>
-        <div class="small-text">Length: ${product.lengths.join(", ")}</div>
-        <div class="small-text">Density: ${product.density.join(", ")}</div>
-        <div class="small-text">Color: ${product.color?.join(", ") || "—"}</div>
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div class="modal-images">
+        <img id="modalImage1" src="" alt="Wig Image">
+        <img id="modalImage2" src="" alt="Wig Image 2" style="display:none;">
       </div>
-    `;
-    grid.appendChild(card);
-  });
-</script>
-  <script>
-    function openModal(event) {
-      event.preventDefault();
-      document.getElementById('modal').style.display = 'flex';
-      setTimeout(() => {
-        window.location.href = event.target.getAttribute('href');
-      }, 2000);
-    }
-  </script><!-- Product Preview Modal -->
-<div id="productModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <div class="modal-images">
-      <img id="modalImage1" src="" alt="Wig Image">
-      <img id="modalImage2" src="" alt="Wig Image 2" style="display:none;">
+      <h2 id="modalTitle"></h2>
+      <p id="modalRatingSold"></p>
+      <p><strong>Lengths:</strong> <span id="modalLengths"></span></p>
+      <p><strong>Density:</strong> <span id="modalDensity"></span></p>
+      <p><strong>Color:</strong> <span id="modalColor"></span></p>
+      <button class="cart-button" onclick="addToCart(selectedProduct)">Add to Cart</button>
+      <button class="cart-button" onclick="buyNow(selectedProduct)">Buy Now</button>
     </div>
-    <h2 id="modalTitle"></h2>
-    <p id="modalRatingSold"></p>
-    <p><strong>Lengths:</strong> <span id="modalLengths"></span></p>
-    <p><strong>Density:</strong> <span id="modalDensity"></span></p>
-    <p><strong>Color:</strong> <span id="modalColor"></span></p>
-    <button onclick="openBuy()">Buy Now</button>
   </div>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const modalImage1 = document.getElementById("modalImage1");
-    const modalImage2 = document.getElementById("modalImage2");
 
-    modalImage1.addEventListener("click", () => {
-      modalImage1.style.display = "none";
-      modalImage2.style.display = "block";
-    });
+  <script src="script.js"></script>
+  <script>
+    let selectedProduct = null;
+    let cart = [];
 
-    modalImage2.addEventListener("click", () => {
-      modalImage2.style.display = "none";
-      modalImage1.style.display = "block";
-    });
-  });
-</script><script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const modalImage1 = document.getElementById("modalImage1");
-    const modalImage2 = document.getElementById("modalImage2");
-
-    let isImage1Visible = true;
-    let switchInterval;
-
-    function showImage1() {
-      modalImage1.style.display = "block";
-      modalImage2.style.display = "none";
-      isImage1Visible = true;
+    function showProduct(index) {
+      selectedProduct = products[index];
+      document.getElementById('modalImage1').src = `images/${selectedProduct.image1}`;
+      document.getElementById('modalImage2').src = `images/${selectedProduct.image2}`;
+      document.getElementById('modalTitle').textContent = selectedProduct.title;
+      document.getElementById('modalRatingSold').textContent = `${selectedProduct.rating} ★ | ${selectedProduct.sold} sold`;
+      document.getElementById('modalLengths').textContent = selectedProduct.lengths.join(", ");
+      document.getElementById('modalDensity').textContent = selectedProduct.density.join(", ");
+      document.getElementById('modalColor').textContent = selectedProduct.color?.join(", ") || "—";
+      document.getElementById('productModal').style.display = 'flex';
     }
 
-    function showImage2() {
-      modalImage1.style.display = "none";
-      modalImage2.style.display = "block";
-      isImage1Visible = false;
+    function closeModal() {
+      document.getElementById('productModal').style.display = 'none';
     }
 
-    function toggleImages() {
-      if (isImage1Visible) {
-        showImage2();
-      } else {
-        showImage1();
-      }
+    function addToCart(product) {
+      cart.push(product);
+      alert("Added to cart!");
     }
 
-    // Manual toggle on click
-    modalImage1.addEventListener("click", toggleImages);
-    modalImage2.addEventListener("click", toggleImages);
-
-    // Auto-switch every 5s
-    switchInterval = setInterval(toggleImages, 5000);
-
-    // Stop auto-switch on modal close
-    document.querySelector(".close-btn").addEventListener("click", function () {
-      clearInterval(switchInterval);
-    });
-
-    // Swipe support
-    let startX = 0;
-
-    function handleTouchStart(e) {
-      startX = e.touches[0].clientX;
+    function buyNow(product) {
+      addToCart(product);
+      // Redirect to payment (use your actual payment URL here)
+      window.location.href = "https://your-payment-gateway.com/checkout";
     }
 
-    function handleTouchEnd(e) {
-      let endX = e.changedTouches[0].clientX;
-      if (Math.abs(startX - endX) > 50) {
-        toggleImages();
-      }
+    function applyFilters() {
+      const type = document.getElementById("filterType").value.toLowerCase();
+      const color = document.getElementById("filterColor").value.toLowerCase();
+      const length = document.getElementById("filterLength").value;
+      const density = document.getElementById("filterDensity").value;
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+
+      const filtered = products.filter(p => {
+        return (!type || p.title.toLowerCase().includes(type)) &&
+               (!color || p.color.some(c => c.toLowerCase().includes(color))) &&
+               (!length || p.lengths.includes(length)) &&
+               (!density || p.density.includes(density)) &&
+               (!keyword || p.title.toLowerCase().includes(keyword));
+      });
+
+      renderProducts(filtered);
     }
 
-    modalImage1.addEventListener("touchstart", handleTouchStart);
-    modalImage1.addEventListener("touchend", handleTouchEnd);
-    modalImage2.addEventListener("touchstart", handleTouchStart);
-    modalImage2.addEventListener("touchend", handleTouchEnd);
-  });
-</script>
-</script></body>
+    function renderProducts(filteredProducts) {
+      const grid = document.getElementById("product-grid");
+      grid.innerHTML = "";
+      filteredProducts.forEach((product, index) => {
+        const card = document.createElement("div");
+        card.className = "product";
+        card.innerHTML = `
+          <img src="images/${product.image1}" alt="${product.title}" onclick="showProduct(${index})">
+          <div class="discount-tag">30% Discount</div>
+          <div class="product-info">
+            <div class="product-title">${product.title}</div>
+            <div class="rating">${"★".repeat(Math.floor(product.rating)) + "☆".repeat(5 - Math.floor(product.rating))}</div>
+            <div class="sales">${product.sold} sold</div>
+            <div class="small-text">Length: ${product.lengths.join(", ")}</div>
+            <div class="small-text">Density: ${product.density.join(", ")}</div>
+            <div class="small-text">Color: ${product.color?.join(", ") || "—"}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    document.getElementById("searchInput").addEventListener("input", applyFilters);
+    document.querySelectorAll(".filter-bar select").forEach(sel => sel.addEventListener("change", applyFilters));
+  </script>
+</body>
 </html>
+
+
+The website has been updated with:
+
+1. Add to Cart functionality — Users can now add multiple wigs to their cart.
+
+
+2. Filter and Search bar — Visitors can filter by type, color, length, and density or search by keywords.
+
+
+3. “Buy Now” button — Instantly adds the product to the cart and redirects to a payment gateway (replace the dummy link with your actual one, e.g., Paystack or Flutterwave).
+
+
+
+Let me know when you're ready to add the payment gateway link or if you'd like a cart page and checkout interface next.
+
