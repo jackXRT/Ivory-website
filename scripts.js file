@@ -572,8 +572,8 @@ products.forEach((product) => {
 
   productCard.innerHTML = `
     <div class="product-image">
-      <img src="images/${product.image1}" alt="${product.name}">
-      <img class="hover-img" src="images/${product.image2}" alt="${product.name}">
+      <img src="images/${product.images[0]}" alt="${product.name}">
+      <img class="hover-img" src="images/${product.images[1]}" alt="${product.name}">
       <div class="discount-tag">30% Discount</div>
     </div>
     <div class="product-info">
@@ -586,4 +586,3 @@ products.forEach((product) => {
 
   grid.appendChild(productCard);
 });
-  renderProducts(products);
