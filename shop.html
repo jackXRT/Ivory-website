@@ -80,50 +80,6 @@
     </div>
   </div>
   <div id="product-grid" class="product-grid"></div>
-
-<script>
-  const grid = document.getElementById("product-grid");
-
-  products.forEach((product, index) => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <img src="images/${product.image1}" alt="${product.title}" onclick="showProduct(${index})">
-      <div class="details">
-        <div class="discount-tag">30% Discount</div>
-        <h3>${product.title}</h3>
-        <div class="stars">${"★".repeat(Math.floor(product.rating)) + "☆".repeat(5 - Math.floor(product.rating))} (${product.sold} sold)</div>
-        <div class="small-text">Length: ${product.lengths.join(", ")}</div>
-        <div class="small-text">Density: ${product.density.join(", ")}</div>
-        <div class="small-text">Color: ${product.color?.join(", ") || "—"}</div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-</script>
-  <script>
-    function openModal(event) {
-      event.preventDefault();
-      document.getElementById('modal').style.display = 'flex';
-      setTimeout(() => {
-        window.location.href = event.target.getAttribute('href');
-      }, 2000);
-    }
-  </script><!-- Product Preview Modal -->
-<div id="productModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <div class="modal-images">
-      <img id="modalImage1" src="" alt="Wig Image">
-      <img id="modalImage2" src="" alt="Wig Image 2" style="display:none;">
-    </div>
-    <h2 id="modalTitle"></h2>
-    <p id="modalRatingSold"></p>
-    <p><strong>Lengths:</strong> <span id="modalLengths"></span></p>
-    <p><strong>Density:</strong> <span id="modalDensity"></span></p>
-    <p><strong>Color:</strong> <span id="modalColor"></span></p>
-    <button onclick="openBuy()">Buy Now</button>
-  </div>
 </div><script>
   const products = [/{name: "Peruvian Burgundy Straight Wig – 99J",  
     rating: 5,  
@@ -698,7 +654,50 @@ function closeModal() { document.getElementById('productModal').style.display = 
 function openBuy() { alert("Proceed to checkout or link this to your cart!"); } </script></body>
 
 </html>
-</script><!-- Swappable image logic -->
+</script>
+<script>
+  const grid = document.getElementById("product-grid");
+
+  products.forEach((product, index) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="images/${product.image1}" alt="${product.title}" onclick="showProduct(${index})">
+      <div class="details">
+        <div class="discount-tag">30% Discount</div>
+        <h3>${product.title}</h3>
+        <div class="stars">${"★".repeat(Math.floor(product.rating)) + "☆".repeat(5 - Math.floor(product.rating))} (${product.sold} sold)</div>
+        <div class="small-text">Length: ${product.lengths.join(", ")}</div>
+        <div class="small-text">Density: ${product.density.join(", ")}</div>
+        <div class="small-text">Color: ${product.color?.join(", ") || "—"}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+  <script>
+    function openModal(event) {
+      event.preventDefault();
+      document.getElementById('modal').style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = event.target.getAttribute('href');
+      }, 2000);
+    }
+  </script><!-- Product Preview Modal -->
+<div id="productModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div class="modal-images">
+      <img id="modalImage1" src="" alt="Wig Image">
+      <img id="modalImage2" src="" alt="Wig Image 2" style="display:none;">
+    </div>
+    <h2 id="modalTitle"></h2>
+    <p id="modalRatingSold"></p>
+    <p><strong>Lengths:</strong> <span id="modalLengths"></span></p>
+    <p><strong>Density:</strong> <span id="modalDensity"></span></p>
+    <p><strong>Color:</strong> <span id="modalColor"></span></p>
+    <button onclick="openBuy()">Buy Now</button>
+  </div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const modalImage1 = document.getElementById("modalImage1");
