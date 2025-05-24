@@ -586,4 +586,4 @@ products.forEach((product) => {
 
   grid.appendChild(productCard);
 });
-  
+  renderProducts(products);
