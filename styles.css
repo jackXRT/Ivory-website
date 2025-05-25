@@ -87,116 +87,168 @@ img {
   height: auto;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  header h1 {
-    font-size: 24px;
-    text-align: center;
-  }
-
-  section {
-    padding: 10px;
-  }
-}
-.modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: flex; justify-content: center; align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  max-width: 500px;
-  border-radius: 12px;
-  text-align: center;
-  position: relative;
-}
-
-.modal-images img {
-  width: 100%; max-height: 250px;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  cursor: pointer;
-  font-size: 24px;
-}
-.modal-images img {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  transition: opacity 0.4s ease-in-out;
-  cursor: pointer;
-}
-#products-container {
+/* Shop Page Enhancements */
+.search-cart {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.search-bar {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  width: 200px;
+}
+
+.cart-icon {
+  font-size: 1.5em;
+  color: #333;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  padding: 0 20px 20px;
+  justify-content: flex-end;
+}
+
+.filters select {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 .product-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 250px;
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  position: relative;
+  transition: transform 0.3s;
 }
 
 .product-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.product-title {
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e63946;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.8em;
   font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 5px;
 }
 
 .product-info {
+  padding: 15px;
+}
+
+.rating {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 0.9em;
-  margin-bottom: 10px;
+}
+
+.stars {
+  color: #ffc107;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #e63946;
+}
+
+.original {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+.variants {
+  font-size: 0.8em;
+  color: #666;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.add-to-cart {
+  width: 100%;
+  background: #000;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-to-cart:hover {
+  background: #333;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  gap: 5px;
+}
+
+.pagination a {
+  color: #333;
+  padding: 8px 15px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background: #000;
+  color: white;
+  border: 1px solid #000;
+}
+
+/* Footer */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 30px;
+  background: #f8f8f8;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
+}
+
+.footer-section a {
   color: #666;
 }
 
-.product-rating {
-  color: #f39c12;
-  font-weight: bold;
+.social-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 1.5em;
 }
 
-.discount-badge {
-  background-color: #ff4d4d;
-  color: #fff;
-  padding: 3px 7px;
-  font-size: 0.8em;
-  border-radius: 5px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.copyright {
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  background: #f8f8f8;
 }
