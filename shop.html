@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop Wigs | Empresso</title>
+  <meta name="description" content="Shop premium quality human hair wigs with free shipping and 30-day returns. Brazilian, Malaysian, Peruvian wigs in various styles and lengths.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
   <header>
@@ -17,12 +20,13 @@
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <div class="search-cart">
-        <input type="text" placeholder="Search wigs..." class="search-bar">
-        <i class="fas fa-shopping-cart cart-icon"></i>
+        <input type="text" placeholder="Search wigs..." class="search-bar" aria-label="Search wigs">
+        <i class="fas fa-shopping-cart cart-icon" aria-hidden="true"></i>
+        <span class="cart-count">0</span>
       </div>
     </nav>
     <a href="index.html">
-      <img src="logo.jpeg" alt="EmpressoHair Logo" class="logo">
+      <img src="logo.jpeg" alt="EmpressoHair Logo" class="logo" width="150" height="80">
     </a>
   </header>
 
@@ -33,97 +37,121 @@
     </section>
 
     <div class="filters">
-      <select>
+      <select aria-label="Sort products">
         <option>Sort by: Featured</option>
         <option>Price: Low to High</option>
         <option>Price: High to Low</option>
         <option>Best Selling</option>
+        <option>Newest Arrivals</option>
       </select>
-      <select>
+      <select aria-label="Filter by length">
         <option>Filter by Length</option>
         <option>Short (8-14")</option>
         <option>Medium (16-24")</option>
         <option>Long (26-40")</option>
       </select>
+      <select aria-label="Filter by color">
+        <option>Filter by Color</option>
+        <option>Natural Black</option>
+        <option>Blonde</option>
+        <option>Ombre</option>
+        <option>Red/Burgundy</option>
+      </select>
     </div>
 
-<div class="product-grid">
-  <!-- Product 1 -->
-  <div class="product-card">
-    <div class="badge">BESTSELLER</div>
-    <div class="product-gallery">
-      <div class="main-image">
-        <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
-             alt="Malaysian Curly Wig Front View" 
-             class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card" data-category="long curly" data-price="189.99" data-rating="4.8">
+        <div class="badge">BESTSELLER</div>
+        <div class="product-gallery">
+          <div class="main-image">
+            <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
+                 alt="Malaysian Curly Wig Front View" 
+                 class="zoom-image"
+                 loading="lazy"
+                 width="300"
+                 height="400">
+            <div class="quick-view" aria-label="Quick view">Quick View</div>
+          </div>
+          
+          <div class="thumbnails">
+            <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
+                 alt="Malaysian Curly Wig Front View" 
+                 class="thumbnail active" 
+                 data-full="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg"
+                 loading="lazy"
+                 width="60"
+                 height="80">
+                 
+            <img src="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg" 
+                 alt="Malaysian Curly Wig Back View" 
+                 class="thumbnail" 
+                 data-full="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg"
+                 loading="lazy"
+                 width="60"
+                 height="80">
+          </div>
+          
+          <div class="mobile-controls">
+            <button class="prev-btn" aria-label="Previous image">&lt;</button>
+            <button class="next-btn" aria-label="Next image">&gt;</button>
+          </div>
+        </div>
+        
+        <div class="product-info">
+          <h3 class="product-name">13x6 Malaysian Curly 40" Wig</h3>
+          <div class="rating">
+            <span class="stars" aria-label="4.8 out of 5 stars">★★★★☆</span>
+            <span class="count">4.8 (600+)</span>
+          </div>
+          <div class="price">$189.99 <span class="original">$219.99</span></div>
+          <div class="variants">
+            <span>Lengths: 16"-40"</span>
+            <span>Density: 200%</span>
+          </div>
+          <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+        </div>
       </div>
-      
-      <div class="thumbnails">
-        <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
-             alt="Front View" 
-             class="thumbnail active" 
-             data-full="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg">
-             
-        <img src="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg" 
-             alt="Back View" 
-             class="thumbnail" 
-             data-full="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg">
-      </div>
-      
-      <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
-      </div>
-    </div>
-    
-    <div class="product-info">
-      <h3>13x6 Malaysian Curly 40" Wig</h3>
-      <div class="rating">
-        <span class="stars">★★★★☆</span>
-        <span class="count">4.8 (600+)</span>
-      </div>
-      <div class="price">$189.99 <span class="original">$219.99</span></div>
-      <div class="variants">
-        <span>Lengths: 16"-40"</span>
-        <span>Density: 200%</span>
-      </div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-</div>
-<div class="product-grid">
+
   <!-- Product 2 -->
-  <div class="product-card">
+  <div class="product-card" data-category="medium blonde" data-price="149.99" data-rating="4.9">
     <div class="badge">HOT</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/PLhrpJxm/Blonde.jpg" 
-             alt="13x6 Honey Blonde Lace Wig" 
+             alt="13x6 Honey Blonde Lace Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/PLhrpJxm/Blonde.jpg" 
-             alt="Front View" 
+             alt="13x6 Honey Blonde Lace Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/PLhrpJxm/Blonde.jpg">
+             data-full="https://i.postimg.cc/PLhrpJxm/Blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/d7BQ8Fkg/Blonde.jpg" 
-             alt="Back View" 
+             alt="13x6 Honey Blonde Lace Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/d7BQ8Fkg/Blonde.jpg">
+             data-full="https://i.postimg.cc/d7BQ8Fkg/Blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>13x6 Honey Blonde Lace Wig</h3>
+      <h3 class="product-name">13x6 Honey Blonde Lace Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span>
         <span class="count">4.9 (438)</span>
       </div>
       <div class="price">$149.99</div>
@@ -131,39 +159,48 @@
         <span>Lengths: 16"-32"</span>
         <span>Density: 180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 3 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long curly" data-price="189.99" data-rating="4.8">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
-             alt="13x6 Malaysian Curly 40 Wig" 
+             alt="13x6 Malaysian Curly 40 Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
-             alt="Front View" 
+             alt="13x6 Malaysian Curly 40 Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg">
+             data-full="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg" 
-             alt="Back View" 
+             alt="13x6 Malaysian Curly 40 Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg">
+             data-full="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>13x6 Malaysian Curly 40" Wig</h3>
+      <h3 class="product-name">13x6 Malaysian Curly 40" Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★☆</span>
+        <span class="stars" aria-label="4.8 out of 5 stars">★★★★☆</span>
         <span class="count">4.8 (600+)</span>
       </div>
       <div class="price">$189.99 <span class="original">$219.99</span></div>
@@ -171,39 +208,48 @@
         <span>Lengths: 16"-40"</span>
         <span>Density: 200%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 4 -->
-  <div class="product-card">
+  <div class="product-card" data-category="medium ash-blonde" data-price="139.99" data-rating="4.7">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg" 
-             alt="Ash Blonde 13x6 Body Wave" 
+             alt="Ash Blonde 13x6 Body Wave Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg" 
-             alt="Front View" 
+             alt="Ash Blonde 13x6 Body Wave Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg">
+             data-full="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/dLb0F4cN/Ash-blonde.jpg" 
-             alt="Side View" 
+             alt="Ash Blonde 13x6 Body Wave Side View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/dLb0F4cN/Ash-blonde.jpg">
+             data-full="https://i.postimg.cc/dLb0F4cN/Ash-blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Ash Blonde 13x6 Body Wave</h3>
+      <h3 class="product-name">Ash Blonde 13x6 Body Wave</h3>
       <div class="rating">
-        <span class="stars">★★★★☆</span>
+        <span class="stars" aria-label="4.7 out of 5 stars">★★★★☆</span>
         <span class="count">4.7 (69)</span>
       </div>
       <div class="price">$139.99</div>
@@ -211,40 +257,49 @@
         <span>Lengths: 16"-32"</span>
         <span>Density: 150%-180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 5 -->
-  <div class="product-card">
+  <div class="product-card" data-category="short straight" data-price="89.99" data-rating="4.7">
     <div class="badge">LIMITED</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg" 
-             alt="Brazilian Straight Bob Wig" 
+             alt="Brazilian Straight Bob Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg" 
-             alt="Front View" 
+             alt="Brazilian Straight Bob Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg">
+             data-full="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/xcJdBBhb/BBBob-wig.jpg" 
-             alt="Back View" 
+             alt="Brazilian Straight Bob Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/xcJdBBhb/BBBob-wig.jpg">
+             data-full="https://i.postimg.cc/xcJdBBhb/BBBob-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Brazilian Straight Bob Wig</h3>
+      <h3 class="product-name">Brazilian Straight Bob Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★☆</span>
+        <span class="stars" aria-label="4.7 out of 5 stars">★★★★☆</span>
         <span class="count">4.7 (420)</span>
       </div>
       <div class="price">$89.99</div>
@@ -252,40 +307,49 @@
         <span>Lengths: 8"-14"</span>
         <span>Density: 180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 6 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long deep-wave" data-price="179.99" data-rating="4.9">
     <div class="badge">BESTSELLER</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg" 
-             alt="Brazilian Deep Wave 13x6" 
+             alt="Brazilian Deep Wave 13x6 Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg" 
-             alt="Front View" 
+             alt="Brazilian Deep Wave 13x6 Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg">
+             data-full="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/m1hrLnrJ/1-Deepwave-13x6.jpg" 
-             alt="Back View" 
+             alt="Brazilian Deep Wave 13x6 Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/m1hrLnrJ/1-Deepwave-13x6.jpg">
+             data-full="https://i.postimg.cc/m1hrLnrJ/1-Deepwave-13x6.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Brazilian Deep Wave 13x6</h3>
+      <h3 class="product-name">Brazilian Deep Wave 13x6</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span>
         <span class="count">4.9 (600+)</span>
       </div>
       <div class="price">$179.99</div>
@@ -293,39 +357,48 @@
         <span>Lengths: 18"-40"</span>
         <span>Density: 180%-200%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 7 -->
-  <div class="product-card">
+  <div class="product-card" data-category="medium silver" data-price="169.99" data-rating="5.0">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/r0fmLTq5/Silver-wig.jpg" 
-             alt="Silver Gray 13x4 HD Lace Wig" 
+             alt="Silver Gray 13x4 HD Lace Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/r0fmLTq5/Silver-wig.jpg" 
-             alt="Front View" 
+             alt="Silver Gray 13x4 HD Lace Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/r0fmLTq5/Silver-wig.jpg">
+             data-full="https://i.postimg.cc/r0fmLTq5/Silver-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/MM6T4HJW/Silver-wig1.jpg" 
-             alt="Back View" 
+             alt="Silver Gray 13x4 HD Lace Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/MM6T4HJW/Silver-wig1.jpg">
+             data-full="https://i.postimg.cc/MM6T4HJW/Silver-wig1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Silver Gray 13x4 HD Lace Wig</h3>
+      <h3 class="product-name">Silver Gray 13x4 HD Lace Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="5.0 out of 5 stars">★★★★★</span>
         <span class="count">5.0 (18)</span>
       </div>
       <div class="price">$169.99</div>
@@ -333,40 +406,49 @@
         <span>Lengths: 14"-30"</span>
         <span>Density: 200%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 8 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long ombre" data-price="219.99" data-rating="5.0">
     <div class="badge">NEW</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/5HMjBpPQ/Ombre-Blonde.jpg" 
-             alt="40 Ombre Blonde 13x6 Wig" 
+             alt="40 Ombre Blonde 13x6 Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/5HMjBpPQ/Ombre-Blonde.jpg" 
-             alt="Front View" 
+             alt="40 Ombre Blonde 13x6 Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/5HMjBpPQ/Ombre-Blonde.jpg">
+             data-full="https://i.postimg.cc/5HMjBpPQ/Ombre-Blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/hJbvpxwy/Ombre-Blonde1.jpg" 
-             alt="Back View" 
+             alt="40 Ombre Blonde 13x6 Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/hJbvpxwy/Ombre-Blonde1.jpg">
+             data-full="https://i.postimg.cc/hJbvpxwy/Ombre-Blonde1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>40" Ombre Blonde 13x6 Wig</h3>
+      <h3 class="product-name">40" Ombre Blonde 13x6 Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="5.0 out of 5 stars">★★★★★</span>
         <span class="count">5.0 (46)</span>
       </div>
       <div class="price">$219.99 <span class="original">$249.99</span></div>
@@ -374,39 +456,48 @@
         <span>Lengths: 18"-40"</span>
         <span>Density: 220%-300%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 9 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long ombre" data-price="199.99" data-rating="5.0">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/2VM16Chw/Ombre-Body-Wave.jpg" 
-             alt="Ombre Blonde Body Wave 36" 
+             alt="Ombre Blonde Body Wave 36 Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/2VM16Chw/Ombre-Body-Wave.jpg" 
-             alt="Front View" 
+             alt="Ombre Blonde Body Wave 36 Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/2VM16Chw/Ombre-Body-Wave.jpg">
+             data-full="https://i.postimg.cc/2VM16Chw/Ombre-Body-Wave.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/sMWvGbJR/Ombre-Body-Wave1.jpg" 
-             alt="Back View" 
+             alt="Ombre Blonde Body Wave 36 Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/sMWvGbJR/Ombre-Body-Wave1.jpg">
+             data-full="https://i.postimg.cc/sMWvGbJR/Ombre-Body-Wave1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Ombre Blonde Body Wave 36"</h3>
+      <h3 class="product-name">Ombre Blonde Body Wave 36"</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="5.0 out of 5 stars">★★★★★</span>
         <span class="count">5.0 (43)</span>
       </div>
       <div class="price">$199.99</div>
@@ -414,40 +505,49 @@
         <span>Lengths: 16"-36"</span>
         <span>Density: 150%-180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 10 -->
-  <div class="product-card">
+  <div class="product-card" data-category="short pixie" data-price="79.99" data-rating="4.6">
     <div class="badge">TRENDING</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/RqP3k702/1-Pixie-13x4.jpg" 
-             alt="Short Pixie Cut 13x4 Wig" 
+             alt="Short Pixie Cut 13x4 Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/RqP3k702/1-Pixie-13x4.jpg" 
-             alt="Front View" 
+             alt="Short Pixie Cut 13x4 Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/RqP3k702/1-Pixie-13x4.jpg">
+             data-full="https://i.postimg.cc/RqP3k702/1-Pixie-13x4.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/1ffgs8nX/Pixie-13x4.jpg" 
-             alt="Side View" 
+             alt="Short Pixie Cut 13x4 Wig Side View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/1ffgs8nX/Pixie-13x4.jpg">
+             data-full="https://i.postimg.cc/1ffgs8nX/Pixie-13x4.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Short Pixie Cut 13x4 Wig</h3>
+      <h3 class="product-name">Short Pixie Cut 13x4 Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★☆</span>
+        <span class="stars" aria-label="4.6 out of 5 stars">★★★★☆</span>
         <span class="count">4.6 (151)</span>
       </div>
       <div class="price">$79.99</div>
@@ -455,39 +555,48 @@
         <span>Length: 6"</span>
         <span>Density: 180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 11 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long straight" data-price="149.99" data-rating="4.9">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/dDQkNHJ8/Bone-straight.jpg" 
-             alt="200 Bone Straight 13x4 Wig" 
+             alt="200 Bone Straight 13x4 Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/dDQkNHJ8/Bone-straight.jpg" 
-             alt="Front View" 
+             alt="200 Bone Straight 13x4 Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/dDQkNHJ8/Bone-straight.jpg">
+             data-full="https://i.postimg.cc/dDQkNHJ8/Bone-straight.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/8fC7F5Zy/Bone-straight1.jpg" 
-             alt="Back View" 
+             alt="200 Bone Straight 13x4 Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/8fC7F5Zy/Bone-straight1.jpg">
+             data-full="https://i.postimg.cc/8fC7F5Zy/Bone-straight1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>200% Bone Straight 13x4 Wig</h3>
+      <h3 class="product-name">200% Bone Straight 13x4 Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span>
         <span class="count">4.9 (43)</span>
       </div>
       <div class="price">$149.99</div>
@@ -495,39 +604,48 @@
         <span>Lengths: 16"-34"</span>
         <span>Density: 200%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 12 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long curly" data-price="159.99" data-rating="4.5">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/0Mn62m0M/Loose-deepwig.jpg" 
-             alt="Loose Deep Curly Human Hair Wig" 
+             alt="Loose Deep Curly Human Hair Wig Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/0Mn62m0M/Loose-deepwig.jpg" 
-             alt="Front View" 
+             alt="Loose Deep Curly Human Hair Wig Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/0Mn62m0M/Loose-deepwig.jpg">
+             data-full="https://i.postimg.cc/0Mn62m0M/Loose-deepwig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/vgbgsXfw/Loose-deepwig1.jpg" 
-             alt="Back View" 
+             alt="Loose Deep Curly Human Hair Wig Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/vgbgsXfw/Loose-deepwig1.jpg">
+             data-full="https://i.postimg.cc/vgbgsXfw/Loose-deepwig1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Loose Deep Curly Human Hair Wig</h3>
+      <h3 class="product-name">Loose Deep Curly Human Hair Wig</h3>
       <div class="rating">
-        <span class="stars">★★★★☆</span>
+        <span class="stars" aria-label="4.5 out of 5 stars">★★★★☆</span>
         <span class="count">4.5 (87)</span>
       </div>
       <div class="price">$159.99</div>
@@ -535,40 +653,49 @@
         <span>Lengths: 16"-34"</span>
         <span>Density: 150%-180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 13 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long body-wave" data-price="179.99" data-rating="5.0">
     <div class="badge">LIMITED</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/2q4bMgqx/Chocolate-wig.jpg" 
-             alt="Chocolate Brown Body Wave 13x6" 
+             alt="Chocolate Brown Body Wave 13x6 Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/2q4bMgqx/Chocolate-wig.jpg" 
-             alt="Front View" 
+             alt="Chocolate Brown Body Wave 13x6 Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/2q4bMgqx/Chocolate-wig.jpg">
+             data-full="https://i.postimg.cc/2q4bMgqx/Chocolate-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/SX0YZmKs/Chocolate-wig1.jpg" 
-             alt="Back View" 
+             alt="Chocolate Brown Body Wave 13x6 Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/SX0YZmKs/Chocolate-wig1.jpg">
+             data-full="https://i.postimg.cc/SX0YZmKs/Chocolate-wig1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Chocolate Brown Body Wave 13x6</h3>
+      <h3 class="product-name">Chocolate Brown Body Wave 13x6</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="5.0 out of 5 stars">★★★★★</span>
         <span class="count">5.0 (64)</span>
       </div>
       <div class="price">$179.99</div>
@@ -576,39 +703,48 @@
         <span>Lengths: 16"-40"</span>
         <span>Density: 200%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 14 -->
-  <div class="product-card">
+  <div class="product-card" data-category="short curly" data-price="89.99" data-rating="4.3">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/K4QLZX0q/Peruvian-bob.jpg" 
-             alt="Peruvian Short Curly Pixie" 
+             alt="Peruvian Short Curly Pixie Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/K4QLZX0q/Peruvian-bob.jpg" 
-             alt="Front View" 
+             alt="Peruvian Short Curly Pixie Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/K4QLZX0q/Peruvian-bob.jpg">
+             data-full="https://i.postimg.cc/K4QLZX0q/Peruvian-bob.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/xXNbyXnh/Peruvian-bob1.jpg" 
-             alt="Back View" 
+             alt="Peruvian Short Curly Pixie Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/xXNbyXnh/Peruvian-bob1.jpg">
+             data-full="https://i.postimg.cc/xXNbyXnh/Peruvian-bob1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Peruvian Short Curly Pixie</h3>
+      <h3 class="product-name">Peruvian Short Curly Pixie</h3>
       <div class="rating">
-        <span class="stars">★★★★☆</span>
+        <span class="stars" aria-label="4.3 out of 5 stars">★★★★☆</span>
         <span class="count">4.3 (29)</span>
       </div>
       <div class="price">$89.99</div>
@@ -616,40 +752,49 @@
         <span>Length: Model Length</span>
         <span>Color: Natural Black</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 15 -->
-  <div class="product-card">
+  <div class="product-card" data-category="long deep-wave" data-price="189.99" data-rating="5.0">
     <div class="badge">HOT</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/3dcvvX52/Deep-curly.jpg" 
-             alt="Honey Blonde Deep Wave 13x6" 
+             alt="Honey Blonde Deep Wave 13x6 Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/3dcvvX52/Deep-curly.jpg" 
-             alt="Front View" 
+             alt="Honey Blonde Deep Wave 13x6 Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/3dcvvX52/Deep-curly.jpg">
+             data-full="https://i.postimg.cc/3dcvvX52/Deep-curly.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/Wh3Zz9K2/Deep-curly1.jpg" 
-             alt="Back View" 
+             alt="Honey Blonde Deep Wave 13x6 Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/Wh3Zz9K2/Deep-curly1.jpg">
+             data-full="https://i.postimg.cc/Wh3Zz9K2/Deep-curly1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Honey Blonde Deep Wave 13x6</h3>
+      <h3 class="product-name">Honey Blonde Deep Wave 13x6</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="5.0 out of 5 stars">★★★★★</span>
         <span class="count">5.0 (30)</span>
       </div>
       <div class="price">$189.99</div>
@@ -657,39 +802,48 @@
         <span>Lengths: 18"-38"</span>
         <span>Density: 190%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 16 -->
-  <div class="product-card">
+  <div class="product-card" data-category="short ginger" data-price="99.99" data-rating="5.0">
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/5YSzYDbt/Ginger-wig.jpg" 
-             alt="Ginger Orange Bob 13x4" 
+             alt="Ginger Orange Bob 13x4 Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/5YSzYDbt/Ginger-wig.jpg" 
-             alt="Front View" 
+             alt="Ginger Orange Bob 13x4 Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/5YSzYDbt/Ginger-wig.jpg">
+             data-full="https://i.postimg.cc/5YSzYDbt/Ginger-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/S2h8Km05/1-Ginger-wig.jpg" 
-             alt="Back View" 
+             alt="Ginger Orange Bob 13x4 Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/S2h8Km05/1-Ginger-wig.jpg">
+             data-full="https://i.postimg.cc/S2h8Km05/1-Ginger-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Ginger Orange Bob 13x4</h3>
+      <h3 class="product-name">Ginger Orange Bob 13x4</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="5.0 out of 5 stars">★★★★★</span>
         <span class="count">5.0 (30)</span>
       </div>
       <div class="price">$99.99</div>
@@ -697,40 +851,49 @@
         <span>Lengths: 10"-14"</span>
         <span>Density: 200%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 
   <!-- Product 17 -->
-  <div class="product-card">
+  <div class="product-card" data-category="medium burgundy" data-price="169.99" data-rating="4.9">
     <div class="badge">NEW</div>
     <div class="product-gallery">
       <div class="main-image">
         <img src="https://i.postimg.cc/w33xsS6b/Peruvian-red.jpg" 
-             alt="Burgundy Peruvian Straight" 
+             alt="Burgundy Peruvian Straight Front View" 
              class="zoom-image"
-             id="current-image">
-        <div class="quick-view">Quick View</div>
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
       </div>
       <div class="thumbnails">
         <img src="https://i.postimg.cc/w33xsS6b/Peruvian-red.jpg" 
-             alt="Front View" 
+             alt="Burgundy Peruvian Straight Front View" 
              class="thumbnail active" 
-             data-full="https://i.postimg.cc/w33xsS6b/Peruvian-red.jpg">
+             data-full="https://i.postimg.cc/w33xsS6b/Peruvian-red.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
         <img src="https://i.postimg.cc/9w4W5q8j/Peruvian-red1.jpg" 
-             alt="Back View" 
+             alt="Burgundy Peruvian Straight Back View" 
              class="thumbnail" 
-             data-full="https://i.postimg.cc/9w4W5q8j/Peruvian-red1.jpg">
+             data-full="https://i.postimg.cc/9w4W5q8j/Peruvian-red1.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
       </div>
       <div class="mobile-controls">
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
       </div>
     </div>
     <div class="product-info">
-      <h3>Burgundy Peruvian Straight</h3>
+      <h3 class="product-name">Burgundy Peruvian Straight</h3>
       <div class="rating">
-        <span class="stars">★★★★★</span>
+        <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span>
         <span class="count">4.9 (52)</span>
       </div>
       <div class="price">$169.99</div>
@@ -738,17 +901,18 @@
         <span>Lengths: 16"-32"</span>
         <span>Density: 180%</span>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
     </div>
   </div>
 </div>
-   </div>
+    </div>
 
     <div class="pagination">
-      <a href="#">&laquo;</a>
       <a href="#" class="active">1</a>
       <a href="#">2</a>
       <a href="#">3</a>
+      <a href="#">4</a>
       <a href="#">&raquo;</a>
     </div>
   </main>
@@ -761,6 +925,7 @@
           <li><a href="#">Contact Us</a></li>
           <li><a href="#">Shipping Policy</a></li>
           <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -769,19 +934,49 @@
           <li><a href="#">Our Story</a></li>
           <li><a href="#">Wig Care Guide</a></li>
           <li><a href="#">Blog</a></li>
+          <li><a href="#">Privacy Policy</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h4>Connect</h4>
         <div class="social-icons">
-          <a href="#"><i class="fab fa-X></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="newsletter">
+          <p>Subscribe for updates</p>
+          <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+          <button>Subscribe</button>
         </div>
       </div>
     </div>
     <p class="copyright">&copy; 2025 Empresso Hair. All rights reserved.</p>
+    <div class="payment-methods">
+      <i class="fab fa-cc-visa" aria-label="Visa"></i>
+      <i class="fab fa-cc-mastercard" aria-label="Mastercard"></i>
+      <i class="fab fa-cc-amex" aria-label="American Express"></i>
+      <i class="fab fa-cc-paypal" aria-label="PayPal"></i>
+    </div>
   </footer>
-  <script src="gallery.js"></script>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <span class="close-lightbox" aria-label="Close lightbox">&times;</span>
+    <div class="lightbox-container">
+      <div class="lightbox-content">
+        <img src="" alt="" id="lightbox-image">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <div class="lightbox-nav">
+          <button class="prev-lightbox" aria-label="Previous image">&lt;</button>
+          <button class="next-lightbox" aria-label="Next image">&gt;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="gallery.js" defer></script>
+  <script src="cart.js" defer></script>
 </body>
 </html>
