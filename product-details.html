@@ -28,7 +28,7 @@
       </div>
     </nav>
     <a href="index.html">
-      <img src="logo.jpeg" alt="EmpressoHair Logo" class="logo" width="150" height="80">
+      <img src="logo.jpeg" alt="EmpressoHair Logo" class="logo" width="100" height="30">
     </a>
   </header>
 
@@ -41,15 +41,35 @@
 
     <div class="product-detail-grid">
       <!-- Gallery Column -->
-      <div class="product-gallery-column">
-        <div class="main-image">
-          <img src="https://i.postimg.cc/w33xsS6b/Peruvian-red.jpg" 
-               alt="Burgundy Peruvian Straight Wig - Front View" 
-               id="current-image"
-               loading="eager"
-               width="600"
-               height="800">
-          <button class="zoom-btn" aria-label="Zoom image"><i class="fas fa-search-plus"></i></button>
+<div class="product-gallery-column">
+  <div class="main-image-container">
+    <img src="product-main-image.jpg" 
+         id="current-product-image"
+         alt="Burgundy Peruvian Straight - Front View"
+         style="width:100%; max-height:500px; object-fit:contain;">
+  </div>
+  
+  <div class="thumbnail-row">
+    <img src="thumb1.jpg" 
+         class="thumbnail active" 
+         onclick="switchMainImage(this.src, 'Front View')">
+    <img src="thumb2.jpg" 
+         class="thumbnail"
+         onclick="switchMainImage(this.src, 'Back View')">
+  </div>
+</div>
+
+<script>
+function switchMainImage(src, alt) {
+  const mainImg = document.getElementById('current-product-image');
+  mainImg.src = src;
+  mainImg.alt = alt;
+  
+  // Update active thumbnail
+  document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
         </div>
         <div class="thumbnails">
           <img src="https://i.postimg.cc/w33xsS6b/Peruvian-red.jpg" 
@@ -88,8 +108,7 @@
           <a href="#reviews" class="see-all-reviews">See all reviews</a>
         </div>
 
-        <div class="sku-availability">
-          <span>SKU: EPS-BPS-001</span>
+        </span>
           <span class="in-stock"><i class="fas fa-check-circle"></i> In Stock (15 units)</span>
         </div>
 
@@ -97,11 +116,11 @@
         <div class="length-options">
           <h3>Select Length:</h3>
           <div class="length-buttons">
-            <button class="length-option active" data-price="159.99" aria-label="16 inches for $159.99">16" - $159.99</button>
-            <button class="length-option" data-price="169.99" aria-label="18 inches for $169.99">18" - $169.99</button>
-            <button class="length-option" data-price="179.99" aria-label="20 inches for $179.99">20" - $179.99</button>
-            <button class="length-option" data-price="189.99" aria-label="22 inches for $189.99">22" - $189.99</button>
-            <button class="length-option" data-price="199.99" aria-label="24 inches for $199.99">24" - $199.99</button>
+            <button class="length-option active" data-price="159.99" aria-label="16 inches for $159.99">16inches"</button>
+            <button class="length-option" data-price="169.99" aria-label="18 inches for $169.99">18inches"</button>
+            <button class="length-option" data-price="179.99" aria-label="20 inches for $179.99">20inches"</button>
+            <button class="length-option" data-price="189.99" aria-label="22 inches for $189.99">22inches"</button>
+            <button class="length-option" data-price="199.99" aria-label="24 inches for $199.99">24inches"</button>
           </div>
         </div>
 
@@ -112,8 +131,7 @@
         </div>
 
         <div class="color-swatches">
-          <h3>Available Colors:</h3>
-          <div class="swatches">
+          <h3>Available Colors:Red</h3> <div class="swatches">
             <button class="swatch active" data-color="burgundy" aria-label="Burgundy color" style="background-color: #800020;"></button>
             <button class="swatch" data-color="black" aria-label="Black color" style="background-color: #000;"></button>
             <button class="swatch" data-color="honey-blonde" aria-label="Honey blonde color" style="background-color: #d4b483;"></button>
@@ -351,8 +369,312 @@
     <section class="related-products">
       <h2>You May Also Like</h2>
       <div class="product-grid">
-        <!-- Related product cards would go here -->
-        <!-- You can reuse the product card structure from shop.html -->
+              <div class="product-card"data-category="long curly" data-price="189.99" data-rating="4.8">
+        <div class="badge">BESTSELLER</div>
+        <a href="product-details.html?id=EPS-MC-40-BK-001" class="product-link" aria-label="View Malaysian Curly Wig details">
+        <div class="product-gallery">
+          <div class="main-image">
+            <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
+                 alt="Malaysian Curly Wig Front View" 
+                 class="zoom-image"
+                 loading="lazy"
+                 width="300"
+                 height="400">
+            <div class="quick-view" aria-label="Quick view">Quick View</div>
+          </div>
+          
+          <div class="thumbnails">
+            <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
+                 alt="Malaysian Curly Wig Front View" 
+                 class="thumbnail active" 
+                 data-full="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg"
+                 loading="lazy"
+                 width="60"
+                 height="80">
+                 
+            <img src="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg" 
+                 alt="Malaysian Curly Wig Back View" 
+                 class="thumbnail" 
+                 data-full="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg"
+                 loading="lazy"
+                 width="60"
+                 height="80">
+          </div>
+          
+          <div class="mobile-controls">
+            <button class="prev-btn" aria-label="Previous image">&lt;</button>
+            <button class="next-btn" aria-label="Next image">&gt;</button>
+          </div>
+        </div>
+        
+        <div class="product-info">
+          <h3 class="product-name">13x6 Malaysian Curly 40" Wig</h3>
+          <div class="rating">
+            <span class="stars" aria-label="4.8 out of 5 stars">★★★★☆</span>
+            <span class="count">4.8 (600+)</span>
+          </div>
+          <div class="price">$189.99 <span class="original">$219.99</span></div>
+          <div class="variants">
+            <span>Lengths: 16"-40"</span>
+            <span>Density: 200%</span>
+          </div>
+          <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+        </div>
+      </div>
+
+  <!-- Product 2 -->
+  <div class="product-card"data-category="medium blonde" data-price="149.99" data-rating="4.9">
+    <div class="badge">HOT</div>
+    <a href="product-details.html?id=EPS-HB-32-HB-002" class="product-link" aria-label="View 13x6 Honey Blonde Lace Wig details">
+    <div class="product-gallery">
+      <div class="main-image">
+        <img src="https://i.postimg.cc/PLhrpJxm/Blonde.jpg" 
+             alt="13x6 Honey Blonde Lace Wig Front View" 
+             class="zoom-image"
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.postimg.cc/PLhrpJxm/Blonde.jpg" 
+             alt="13x6 Honey Blonde Lace Wig Front View" 
+             class="thumbnail active" 
+             data-full="https://i.postimg.cc/PLhrpJxm/Blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+        <img src="https://i.postimg.cc/d7BQ8Fkg/Blonde.jpg" 
+             alt="13x6 Honey Blonde Lace Wig Back View" 
+             class="thumbnail" 
+             data-full="https://i.postimg.cc/d7BQ8Fkg/Blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+      </div>
+      <div class="mobile-controls">
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">13x6 Honey Blonde Lace Wig</h3>
+      <div class="rating">
+        <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span>
+        <span class="count">4.9 (438)</span>
+      </div>
+      <div class="price">$149.99</div>
+      <div class="variants">
+        <span>Lengths: 16"-32"</span>
+        <span>Density: 180%</span>
+      </div>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="product-card"data-category="long curly" data-price="189.99" data-rating="4.8">
+     <a href="product-details.html?id=EPS-BW-32-AB-003" class="product-link" aria-label="View 13x6 Malaysian Curly 40 Wig details">
+    <div class="product-gallery">
+      <div class="main-image">
+        <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
+             alt="13x6 Malaysian Curly 40 Wig Front View" 
+             class="zoom-image"
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg" 
+             alt="13x6 Malaysian Curly 40 Wig Front View" 
+             class="thumbnail active" 
+             data-full="https://i.postimg.cc/47xfP0py/Malaysian-c.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+        <img src="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg" 
+             alt="13x6 Malaysian Curly 40 Wig Back View" 
+             class="thumbnail" 
+             data-full="https://i.postimg.cc/NKRjjmgs/Malaysian-cc.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+      </div>
+      <div class="mobile-controls">
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">13x6 Malaysian Curly 40" Wig</h3>
+      <div class="rating">
+        <span class="stars" aria-label="4.8 out of 5 stars">★★★★☆</span>
+        <span class="count">4.8 (600+)</span>
+      </div>
+      <div class="price">$189.99 <span class="original">$219.99</span></div>
+      <div class="variants">
+        <span>Lengths: 16"-40"</span>
+        <span>Density: 200%</span>
+      </div>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="product-card"data-category="medium ash-blonde" data-price="139.99" data-rating="4.7">
+     <a href="product-details.html?id=EPS-BS-14-BK-004" class="product-link" aria-label=" View Ash Blonde 13x6 Body Wave details">
+    <div class="product-gallery">
+      <div class="main-image">
+        <img src="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg" 
+             alt="Ash Blonde 13x6 Body Wave Front View" 
+             class="zoom-image"
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg" 
+             alt="Ash Blonde 13x6 Body Wave Front View" 
+             class="thumbnail active" 
+             data-full="https://i.postimg.cc/9RgWnBBp/Ash-blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+        <img src="https://i.postimg.cc/dLb0F4cN/Ash-blonde.jpg" 
+             alt="Ash Blonde 13x6 Body Wave Side View" 
+             class="thumbnail" 
+             data-full="https://i.postimg.cc/dLb0F4cN/Ash-blonde.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+      </div>
+      <div class="mobile-controls">
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">Ash Blonde 13x6 Body Wave</h3>
+      <div class="rating">
+        <span class="stars" aria-label="4.7 out of 5 stars">★★★★☆</span>
+        <span class="count">4.7 (69)</span>
+      </div>
+      <div class="price">$139.99</div>
+      <div class="variants">
+        <span>Lengths: 16"-32"</span>
+        <span>Density: 150%-180%</span>
+      </div>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+  <div class="product-card"data-category="short straight" data-price="89.99" data-rating="4.7">
+    <div class="badge">LIMITED</div>
+    <a href="product-details.html?id=EPS-DW-40-BK-005" class="product-link" aria-label=" View Brazilian Straight Bob Wig details">
+    <div class="product-gallery">
+      <div class="main-image">
+        <img src="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg" 
+             alt="Brazilian Straight Bob Wig Front View" 
+             class="zoom-image"
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg" 
+             alt="Brazilian Straight Bob Wig Front View" 
+             class="thumbnail active" 
+             data-full="https://i.postimg.cc/Z0DR7J7S/BBBob-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+        <img src="https://i.postimg.cc/xcJdBBhb/BBBob-wig.jpg" 
+             alt="Brazilian Straight Bob Wig Back View" 
+             class="thumbnail" 
+             data-full="https://i.postimg.cc/xcJdBBhb/BBBob-wig.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+      </div>
+      <div class="mobile-controls">
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">Brazilian Straight Bob Wig</h3>
+      <div class="rating">
+        <span class="stars" aria-label="4.7 out of 5 stars">★★★★☆</span>
+        <span class="count">4.7 (420)</span>
+      </div>
+      <div class="price">$89.99</div>
+      <div class="variants">
+        <span>Lengths: 8"-14"</span>
+        <span>Density: 180%</span>
+      </div>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+    </div>
+  </div>
+
+  <!-- Product 6 -->
+  <div class="product-card"data-category="long deep-wave" data-price="179.99" data-rating="4.9">
+    <div class="badge">BESTSELLER</div>
+    <a href="product-details.html?id=EPS-SG-30-SG-006" class="product-link" aria-label=" View Brazilian Deep Wave 13x6 details">
+    <div class="product-gallery">
+      <div class="main-image">
+        <img src="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg" 
+             alt="Brazilian Deep Wave 13x6 Front View" 
+             class="zoom-image"
+             loading="lazy"
+             width="300"
+             height="400">
+        <div class="quick-view" aria-label="Quick view">Quick View</div>
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg" 
+             alt="Brazilian Deep Wave 13x6 Front View" 
+             class="thumbnail active" 
+             data-full="https://i.postimg.cc/Wt4zwd78/Deepwave-13x6.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+        <img src="https://i.postimg.cc/m1hrLnrJ/1-Deepwave-13x6.jpg" 
+             alt="Brazilian Deep Wave 13x6 Back View" 
+             class="thumbnail" 
+             data-full="https://i.postimg.cc/m1hrLnrJ/1-Deepwave-13x6.jpg"
+             loading="lazy"
+             width="60"
+             height="80">
+      </div>
+      <div class="mobile-controls">
+        <button class="prev-btn" aria-label="Previous image">&lt;</button>
+        <button class="next-btn" aria-label="Next image">&gt;</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">Brazilian Deep Wave 13x6</h3>
+      <div class="rating">
+        <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span>
+        <span class="count">4.9 (600+)</span>
+      </div>
+      <div class="price">$179.99</div>
+      <div class="variants">
+        <span>Lengths: 18"-40"</span>
+        <span>Density: 180%-200%</span>
+      </div>
+      <button class="add-to-cart" aria-label="Add to cart">Add to Cart</button>
+      <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+    </div>
+  </div>
       </div>
     </section>
   </main>
@@ -371,7 +693,7 @@
       <div class="footer-section">
         <h4>About Empresso</h4>
         <ul>
-          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Our Story</a></li> We are the best
           <li><a href="#">Wig Care Guide</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Privacy Policy</a></li>
