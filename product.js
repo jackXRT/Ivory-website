@@ -338,3 +338,34 @@ function updateShippingEstimate(countryCode) {
   // Implementation from previous example
   // Updates the shipping timeline display
 }
+// Product Page Interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // Length selection
+  document.querySelectorAll('.length-option').forEach(option => {
+    option.addEventListener('click', function() {
+      document.querySelectorAll('.length-option').forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Update displayed price
+      const newPrice = this.dataset.price;
+      document.querySelector('.current-price').textContent = `$${newPrice}`;
+    });
+  });
+
+  // Quantity selector
+  document.querySelectorAll('.qty-plus').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const input = this.parentElement.querySelector('input');
+      input.value = parseInt(input.value) + 1;
+    });
+  });
+
+  document.querySelectorAll('.qty-minus').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const input = this.parentElement.querySelector('input');
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+      }
+    });
+  });
+});
